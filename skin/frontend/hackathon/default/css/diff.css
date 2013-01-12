@@ -1,12 +1,4 @@
-/*!
- * Magento responsive theme aka Bootstrapped v0.9.1.1
- *
- * @category    design
- * @package     bootstrapped_default
- * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- * @author      Vedran Subotic <vedran@magenthon.com>
- */
+.navbar .nav { float: right }
 
 .block-cart .form-horizontal .control-group .control-label {
 	width: 50px !important;
@@ -28,7 +20,7 @@
     vertical-align: middle;
 }
 .pagination {
-	margin: 0px !important;
+	margin: 0 !important;
 }
 .pagination a {
 	/*line-height: 26px !important;*/
@@ -189,11 +181,6 @@ p.price-from, p.price-to {
 .navbar-fixed-top .brand {
     float: left;
     margin-left: 0;
-    font-size: 22px;
-}
-.navbar .brand:hover, .navbar .brand.active {
-    text-shadow: 0 0 0.2em #CFC, 0 0 0.2em #CFC, 0 0 0.2em #CFC;
-    filter: progid:DXImageTransform.Microsoft.Glow(color=#ccffcc,strength=2);
 }
 .validation-advice {
     vertical-align: middle;

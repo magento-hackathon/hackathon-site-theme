@@ -1,16 +1,4 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Magento responsive theme
- *
- * @category    design
- * @package     bootstrapped_default
- * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- * @author      Vedran Subotic <vedran@magenthon.com>
- */
-
--->
 <layout version="0.1.0">
 <!--
 Default layout, loads most of the pages
@@ -35,6 +23,12 @@ Default layout, loads most of the pages
         </reference>
         <reference name="before_body_end">
             <block type="core/template" name="jquery_noconflict" template="jquery/noconflict.phtml" before="-" />
+        </reference>
+        <reference name="top.links">
+            <remove name="wishlist_link"/>
+            <remove name="checkout_cart_link"/>
+            <action method="addLink" translate="label title" module="cms"><label>Home</label><url>/</url><title>Home</title><prepare/><urlParams/><position>1</position></action>
+            <action method="addLink" translate="label title" module="cms"><label>What is a Hackathon?</label><url>about</url><title>What is a Hackathon?</title><prepare/><urlParams/><position>5</position></action>
         </reference>
     </default>
 
