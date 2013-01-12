@@ -1,4 +1,5 @@
 .navbar .nav { float: right }
+footer .nav li { float: right; margin-right: 10px }
 
 .block-cart .form-horizontal .control-group .control-label {
 	width: 50px !important;

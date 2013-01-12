@@ -27,8 +27,18 @@ Default layout, loads most of the pages
         <reference name="top.links">
             <remove name="wishlist_link"/>
             <remove name="checkout_cart_link"/>
-            <action method="addLink" translate="label title" module="cms"><label>Home</label><url>/</url><title>Home</title><prepare/><urlParams/><position>1</position></action>
+            <action method="addLink" translate="label title" module="cms"><label>Home</label><url/><title>Home</title><prepare>true</prepare><urlParams/><position>1</position></action>
             <action method="addLink" translate="label title" module="cms"><label>What is a Hackathon?</label><url>about</url><title>What is a Hackathon?</title><prepare/><urlParams/><position>5</position></action>
+        </reference>
+        <reference name="footer_links">
+            <action method="removeLinkByUrl"><url helper="catalogsearch/getAdvancedSearchUrl"/></action>
+            <action method="removeLinkByUrl"><url helper="catalog/map/getCategoryUrl"/></action>
+            <action method="removeLinkByUrl"><url helper="catalogsearch/getSearchTermUrl"/></action>
+            <action method="removeLinkByUrl"><url>contacts</url></action>
+            <remove name="return_link"/>
+            <remove name="cms_footer_links"/>
+            <action method="addLink" translate="label title" module="cms"><label>Imprint</label><url>imprint</url><title>Imprint</title><prepare/></action>
+            <action method="addLink" translate="label title" module="cms"><label>Home</label><url/><title>Home</title><prepare>true</prepare></action>
         </reference>
     </default>
 
