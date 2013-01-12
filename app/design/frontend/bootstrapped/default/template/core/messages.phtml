@@ -1,0 +1,24 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php if($this->getMessagesBlock()->getMessageCollection()->count()): ?>
+<?php foreach($this->getMessagesBlock()->getMessageCollection()->getItems() as $message): ?>
+
+
+    <div class="alert alert-<?php echo $message->getType()?> fade in">
+        <a class="close" data-dismiss="alert">×</a>
+        <h4 class="alert-heading" style="text-transform: capitalize;"><?php echo $message->getType()?>!</h4>
+        <?php echo $message->getCode()?>
+    </div>
+
+<?php endforeach;?>
+<?php $this->getMessagesBlock()->getMessageCollection()->clear(); ?>
+<?php endif; ?>

@@ -1,0 +1,27 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php
+/**
+ * Customer "Remember Me" template
+ *
+ */
+/** @var $this Mage_Persistent_Block_Form_Remember */
+?>
+
+<div class="controls">
+    <label class="checkbox">
+    <input type="checkbox" name="persistent_remember_me" class="input-checkbox" id="<?php echo $rememberMeId; ?>"<?php if ($this->isRememberMeChecked()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Remember Me') ?>" />
+        <?php echo $this->__('Remember Me') ?>
+        <a data-content="Checking &quot;Remember Me&quot; will let you access your shopping cart on this computer when you are logged out" rel="popover" class="label label-info" href="#" data-original-title="What's this?"><?php echo $this->__('What\'s this?') ?></a>
+    </label>
+</div>
+

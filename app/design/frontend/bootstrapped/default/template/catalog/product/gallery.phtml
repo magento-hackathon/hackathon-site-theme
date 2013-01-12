@@ -1,0 +1,94 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php $_width=$this->getImageWidth() ?>
+    <div id="myGallery" class="carousel" <?php ?>style="width:<?php echo $_width; ?>px;"<?php ?> >
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+    <?php if($this->getPreviusImageUrl()): ?>
+    	<div class="item">
+    	    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $this->getPreviusImage()->getFile()); ?>"<?php if($_width): ?> width="<?php echo $_width ?>"<?php endif; ?> alt="<?php echo $this->htmlEscape($this->getPreviusImage()->getLabel()) ?>" title="<?php echo $this->htmlEscape($this->getPreviusImage()->getLabel()) ?>" />
+	        <?php if($_imageTitle = $this->htmlEscape($this->getPreviusImage()->getLabel())): ?>
+		        	    <div class="carousel-caption">
+					    	<h1 class="image-label"><?php echo $_imageTitle ?></h1>
+					    </div>
+		    <?php endif; ?>
+	    </div>
+    <?php endif;?>
+    
+    
+    <div class="active item">
+	    
+	    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $this->getImageFile()); ?>"<?php if($_width): ?> width="<?php echo $_width ?>"<?php endif; ?> alt="<?php echo $this->htmlEscape($this->getCurrentImage()->getLabel()) ?>" title="<?php echo $this->htmlEscape($this->getCurrentImage()->getLabel()) ?>" id="product-gallery-image" class="image" />
+	        <?php if($_imageTitle = $this->htmlEscape($this->getCurrentImage()->getLabel())): ?>
+		        	    <div class="carousel-caption">
+					    	<h1 class="image-label"><?php echo $_imageTitle ?></h1>
+					    </div>
+		    <?php endif; ?>
+
+    </div>
+    
+    <?php if($this->getNextImageUrl()): ?>
+    	<div class="item">
+    	    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $this->getNextImage()->getFile()); ?>"<?php if($_width): ?> width="<?php echo $_width ?>"<?php endif; ?> alt="<?php echo $this->htmlEscape($this->getNextImage()->getLabel()) ?>" title="<?php echo $this->htmlEscape($this->getNextImage()->getLabel()) ?>" />
+	        <?php if($_imageTitle = $this->htmlEscape($this->getNextImage()->getLabel())): ?>
+		        	    <div class="carousel-caption">
+					    	<h1 class="image-label"><?php echo $_imageTitle ?></h1>
+					    </div>
+		    <?php endif; ?>
+	    </div>
+    <?php endif;?>
+    
+    </div>
+    <!-- Carousel nav -->
+<!--     <a class="carousel-control left" href="#myGallery" data-slide="prev">&lsaquo;</a> -->
+<!--     <a class="carousel-control right" href="#myGallery" data-slide="next">&rsaquo;</a> -->
+        <?php if($this->getPreviusImageUrl() || $this->getNextImageUrl()): ?>
+	              <a href="#myGallery" data-slide="prev" class="carousel-control left">&laquo;</a>
+	              <a href="#myGallery" data-slide="next" class="carousel-control right">&raquo;</a>
+	    <?php endif; ?>
+    </div>
+<?php /*?>    
+<?php $_width=$this->getImageWidth() ?>
+<div class="product-image-popup" style="width:<?php echo $_width; ?>px;">
+    <div class="buttons-set"><a href="#" onclick="window.close(); return false;" class="button"><span><?php echo $this->__('Close Window') ?></span></a></div>
+    <?php if($this->getPreviusImageUrl() || $this->getNextImageUrl()): ?>
+        <div class="nav">
+          <?php if($_prevUrl = $this->getPreviusImageUrl()): ?>
+              <a href="<?php echo $_prevUrl ?>" class="prev">&laquo; <?php echo $this->__('Prev') ?></a>
+          <?php endif; ?>
+          <?php if($_nextUrl = $this->getNextImageUrl()): ?>
+              <a href="<?php echo $_nextUrl ?>" class="next"><?php echo $this->__('Next') ?> &raquo;</a>
+          <?php endif; ?>
+        </div>
+    <?php endif; ?>
+    <?php if($_imageTitle = $this->htmlEscape($this->getCurrentImage()->getLabel())): ?>
+        <h1 class="image-label"><?php echo $_imageTitle ?></h1>
+    <?php endif; ?>
+    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $this->getImageFile()); ?>"<?php if($_width): ?> width="<?php echo $_width ?>"<?php endif; ?> alt="<?php echo $this->htmlEscape($this->getCurrentImage()->getLabel()) ?>" title="<?php echo $this->htmlEscape($this->getCurrentImage()->getLabel()) ?>" id="product-gallery-image" class="image" />
+    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $this->getPreviusImage()->getFile()); ?>"<?php if($_width): ?> width="<?php echo $_width ?>"<?php endif; ?> alt="<?php echo $this->htmlEscape($this->getCurrentImage()->getLabel()) ?>" title="<?php echo $this->htmlEscape($this->getCurrentImage()->getLabel()) ?>" id="product-gallery-image" class="image" />
+    <div class="buttons-set"><a href="#" onclick="window.close(); return false;" class="button"><span><?php echo $this->__('Close Window') ?></span></a></div>
+    <?php if($this->getPreviusImageUrl() || $this->getNextImageUrl()): ?>
+        <div class="nav">
+          <?php if($_prevUrl = $this->getPreviusImageUrl()): ?>
+              <a href="<?php echo $_prevUrl ?>" class="prev">&laquo; <?php echo $this->__('Prev') ?></a>
+          <?php endif; ?>
+          <?php if($_nextUrl = $this->getNextImageUrl()): ?>
+              <a href="<?php echo $_nextUrl ?>" class="next"><?php echo $this->__('Next') ?> &raquo;</a>
+          <?php endif; ?>
+        </div>
+    <?php endif; ?>
+</div<?php */?>
+<?php //Zend_Debug::dump($this->getPreviusImage()->getFile())?>
+<?php //Zend_Debug::dump($this->getNextImage()->getFile())?>
+<?php //Zend_Debug::dump($this->getGalleryCollection())?>
+<?php //Zend_Debug::dump($this->getBlockAlias())?>
+

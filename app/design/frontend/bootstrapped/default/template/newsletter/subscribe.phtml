@@ -1,0 +1,32 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<div class="block block-subscribe">
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail" class="form well">
+        <fieldset>
+            <div class="control-group">
+                <label  class="control-label" for="newsletter"><?php echo $this->__('Sign Up for Our Newsletter:') ?></label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-envelope"></i></span>
+                            <input type="text" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="span2 required-entry validate-email" />
+                        </div>
+                    </div>
+                    <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="btn btn-inverse"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+            </div>
+        </fieldset>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    </script>
+</div>

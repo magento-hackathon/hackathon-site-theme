@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+
+-->
+<layout version="0.1.0">
+<!--
+Default layout, loads most of the pages
+-->
+
+    <default>
+        <reference name="left">
+            <block type="catalog/navigation" name="catalog.leftnav.custom" before="wordpress_sidebar_left" template="catalog/navigation/left.custom.phtml"/>
+            <action method="unsetChild"><name>left.permanent.callout</name></action>
+        </reference>
+
+        <reference name="right">
+            <action method="unsetChild"><name>right.permanent.callout</name></action>
+            <remove name="paypal.partner.right.logo"/>
+        </reference>
+
+        <reference name="root">
+            <remove name="global_messages" />
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="alert_global_messages" template="core/messages.phtml" before="-" />
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="jquery_noconflict" template="jquery/noconflict.phtml" before="-" />
+        </reference>
+    </default>
+
+    <customer_account>
+        <remove name="catalog.leftnav.custom" />
+    </customer_account>
+
+    <catalog_category_default translate="label">
+        <remove name="catalog.leftnav" />
+        <reference name="breadcrumbs">
+            <block type="catalog/layer_view" name="catalog.leftnav.breadcrumbs" after="currency" template="catalog/layer/view.phtml"/>
+        </reference>
+    </catalog_category_default>
+    
+    <catalog_category_layered translate="label">
+        <remove name="catalog.leftnav" />
+        <reference name="breadcrumbs">
+            <block type="catalog/layer_view" name="catalog.leftnav.breadcrumbs" after="currency" template="catalog/layer/view.phtml"/>
+        </reference>
+    </catalog_category_layered>
+
+    <tag_list_index translate="label">
+        <label>Tags List (All Available)</label>
+        <!-- Mage_Tag -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/3columns.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <remove name="tags_popular" />
+        </reference>
+    </tag_list_index>
+
+</layout>

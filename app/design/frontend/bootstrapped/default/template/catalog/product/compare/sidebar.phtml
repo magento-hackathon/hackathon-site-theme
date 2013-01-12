@@ -1,0 +1,59 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+
+/* @var $this Mage_Catalog_Block_Product_Compare_Sidebar */
+?>
+<?php 
+$_helper = $this->helper('catalog/product_compare');
+$_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
+?>
+<div class="block block-list block-compare well">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Compare Products') ?>
+            <?php if($_helper->getItemCount() > 0): ?> 
+                <small><?php echo $this->__('(%d)', $_helper->getItemCount()) ?></small>
+            <?php endif; ?>
+        </span></strong>
+    </div>
+    <div class="block-content">
+    <?php if($_helper->getItemCount() > 0): ?>
+        <?php foreach($_items as $_index => $_item): ?>
+            <div class="item">
+                <input type="hidden" class="compare-item-id" value="<?php echo $_item->getId() ?>" />
+                
+                            <div class="modal hide fade" id="compare_<?php echo $this->escapeHtml($_item->getId())?>" style="display: none;">
+                                <div class="modal-header">
+                                    <a class="close" data-dismiss="modal">×</a>
+                                    <h3><?php echo $this->__('Are you sure you would like to remove this item from the compare products?') ?></h3>
+                                </div>
+                                <div class="modal-body">
+                                    <h6 class="label label-info"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></h6>
+                                </div>
+                                    <div class="modal-footer">
+                                    <a href="#" class="btn close" data-dismiss="modal"><?php echo $this->__('Cancel') ?></a>
+                                    <a href="<?php echo $_helper->getRemoveUrl($_item) ?>" class="btn btn-warning"><?php echo $this->__('Remove This Item') ?></a>
+                                </div>
+                            </div>
+                        
+                        <a class="pull-right" data-toggle="modal" href="#compare_<?php echo $this->escapeHtml($_item->getId())?>" title="<?php echo $this->__('Remove This Item') ?>" ><span class="icon-remove-sign"></span></a>
+                        
+                <p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></a></p>
+            </div>
+        <?php endforeach; ?>
+        <div class="actions">
+            <a class="label label-important" href="<?php echo $_helper->getClearListUrl() ?>" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove all products from your comparison?') ?>');"><?php echo $this->__('Clear All') ?></a>
+            <button type="button" title="<?php echo $this->__('Compare') ?>" class="btn btn-mini btn-info pull-right" onclick="popWin('<?php echo $_helper->getListUrl() ?>','compare','top:0,left:0,width=820,height=600,resizable=yes,scrollbars=yes')"><span><span><?php echo $this->__('Compare') ?></span></span></button>
+        </div>
+    <?php else: ?>
+        <p class="empty"><?php echo $this->__('You have no items to compare.') ?></p>
+    <?php endif; ?>
+    </div>
+</div>

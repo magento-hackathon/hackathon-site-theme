@@ -1,0 +1,56 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="page-title well">
+    <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
+</div>
+<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" class="form well">
+    <fieldset>
+        <legend><?php echo Mage::helper('contacts')->__('Contact Information') ?></legend>
+                <div class=control-group>
+                    <label for="name" class="control-label"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                    <div class="controls">
+                        <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="email" class="control-label"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                    <div class="controls">
+                        <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                    </div>
+                </div>
+            <div class=control-group>
+                <label for="telephone" class="control-label"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                <div class="controls">
+                    <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="text" />
+                </div>
+            </div>
+            <div class=control-group>
+                <label for="comment" class="control-label"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                <div class="controls">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                </div>
+            </div>
+        <p class="help-block"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+        <div class="form-actions">
+        
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="btn btn-large"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+    </div>
+    </fieldset>
+
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+</script>

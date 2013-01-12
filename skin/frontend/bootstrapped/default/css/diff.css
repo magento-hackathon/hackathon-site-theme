@@ -1,0 +1,223 @@
+/*!
+ * Magento responsive theme aka Bootstrapped v0.9.1.1
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+
+.block-cart .form-horizontal .control-group .control-label {
+	width: 50px !important;
+}
+.block-cart .form-horizontal .controls {
+	margin-left: 60px;
+}
+.block-related .form-horizontal .control-group .control-label {
+	width: 50px !important;
+}
+.block-related .form-horizontal .controls {
+	margin-left: 60px;
+}
+.amount {
+	margin-left: 10px;
+	margin-top: 5px;
+}
+.toolbar .the-icons {
+    vertical-align: middle;
+}
+.pagination {
+	margin: 0px !important;
+}
+.pagination a {
+	/*line-height: 26px !important;*/
+}
+
+.navbar-toolbar {
+    width: 100%;
+    height: 36px;
+    background-color: #eeeeee; /* Old browsers */
+    background-repeat: repeat-x; /* Repeat the gradient */
+    background-image: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* FF3.6+ */
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+    background-image: -webkit-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Chrome 10+,Safari 5.1+ */
+    background-image: -ms-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* IE10+ */
+    background-image: -o-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Opera 11.10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+    background-image: linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* W3C */
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.add-to-links { margin: 5px 0 0 0;}
+.old-price { text-decoration: line-through;}
+.price{
+	font-weight: bold;
+	color: #DA4F49;
+}
+#wishlistCarousel .price {
+	color: #FFF;
+}
+.crosssell .price {
+	color: #FFF;
+}
+.box-up-sell.well {
+	background-color: #fff;
+}
+.alert-custom {
+	color:#C09853;
+	background-color: #B94A48;
+	border: medium none;
+}
+.alert-custom p{
+	text-shadow: 0 0 0.2em #CCFFCC, 0 0 0.2em #CCFFCC, 0 0 0.2em #CCFFCC;
+}
+body{
+	background-image: url('http://bootstrapped.magenthon.com/pixel.png') !important;
+    padding-top: 45px;
+}
+@media (min-width: 768px) and (max-width: 980px) {
+    /* Remove any padding from the body */
+    body {
+        padding-top: 0;
+    }
+    .label{
+        font-size: 9px;
+    }
+    .nav-tabs > li > a, .nav-pills > li > a {
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+    .modal{
+        width:60%;
+        left:20%;
+        margin: -350px 0  -350px 0;
+        max-height: 100%;
+        text-align: center;
+    }
+    .modal-body{
+        padding: 0;
+        max-height: 100%;
+    }
+}
+@media (max-width: 768px) {
+    /* Remove any padding from the body */
+    body {
+        padding-top: 0;
+    }
+    .label{
+        font-size: 9px;
+    }
+    .nav-tabs > li > a, .nav-pills > li > a {
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+    .modal{
+        width:60%;
+        left:20%;
+        margin: -350px 0  -350px 0;
+        max-height: 100%;
+    }
+    .modal-body{
+        padding: 0;
+        max-height: 100%;
+    }
+}
+.modal{
+    text-align: center;
+}
+header {
+    padding-bottom: 5px;
+}
+.hero-unit {
+    padding: 30px;
+    background-color: #f5f5f5;
+}
+.form-actions {
+    background-color: #f5f5f5;
+}
+.help-block {
+    color: #999999;
+}
+.input-prepend .add-on,
+.input-append .add-on {
+    float: left;
+    display: block;
+    color: #999;
+}
+.help-inline{
+    margin-bottom: 9px;
+}
+.label{
+    line-height: 12px;
+    padding: 2px 4px 3px;
+    vertical-align: inherit;
+}
+li .active > a{
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    background-color: #08C;
+}
+.category-products .caption h2, .category-products .products-list h2{
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 18px;
+}
+.products-list .thumbnail.data{
+    background-color: #F5F5F5;
+}
+.products-grid .item{
+    margin-top: 2px;
+}
+.product-image .modal{
+    width:60%;
+    left:20%;
+    margin: -350px 0  -350px 0;
+    max-height: 100%;
+    text-align: center;
+}
+.product-image .modal-body{
+    padding: 0;
+    max-height: 100%;
+}
+p.price-from, p.price-to {
+    margin: 0;
+}
+.navbar-fixed-top .brand {
+    float: left;
+    margin-left: 0;
+    font-size: 22px;
+}
+.navbar .brand:hover, .navbar .brand.active {
+    text-shadow: 0 0 0.2em #CFC, 0 0 0.2em #CFC, 0 0 0.2em #CFC;
+    filter: progid:DXImageTransform.Microsoft.Glow(color=#ccffcc,strength=2);
+}
+.validation-advice {
+    vertical-align: middle;
+    padding-left: 5px;
+    display: inline-block;
+    margin-bottom: 9px;
+}
+
+.control-group.error .validation-advice {
+    color: #B94A48;
+}
+ul.tags-list li{
+    display: inline;
+}
+body.page-popup.catalog-product-compare-index{
+    padding-top: 0px;
+}
+.page-popup.catalog-product-compare-index .well, .page-popup.catalog-product-compare-index .form-actions{
+    margin-bottom: 0;
+}
+.page-sitemap ul.links.nav li{
+    float: right;
+}
+
+.icon-grid{
+    background-position: -216px 0;
+}

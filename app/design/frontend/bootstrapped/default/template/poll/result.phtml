@@ -1,0 +1,38 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php if(isset($poll)) : ?>
+<div class="block block-poll well alert-success">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Community Poll') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <p class="block-subtitle"><?php echo $this->htmlEscape($poll->getPollTitle()); ?></p>
+        <?php if( $poll_answers ): ?>
+        <ol id="poll-answers" class="unstyled">
+            <?php foreach( $poll_answers as $answer ): ?>
+                <li>
+                    <span class="answer"><?php echo $this->htmlEscape($answer->getAnswerTitle()) ?>:</span>
+
+                    <span class="votes">
+                        <div class="progress progress-info progress-striped">
+                            <div class="bar" style="width: <?php echo $answer->getPercent() ?>%"></div>
+                        </div>
+                    </span>
+
+                </li>
+            <?php endforeach; ?>
+        </ol>
+        <script type="text/javascript">decorateList('poll-answers');</script>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>

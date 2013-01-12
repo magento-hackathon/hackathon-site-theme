@@ -1,0 +1,81 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+    <head>
+        <?php echo $this->getChildHtml('head') ?>
+    </head>
+    <body<?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>>
+        <?php echo $this->getChildHtml('after_body_start') ?>
+        <div class="wrapper">
+
+            <div class="page">
+                <div class="navbar navbar-fixed-top">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <?php echo $this->getChildHtml('header') ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <header>
+                        <?php echo $this->getChildHtml('breadcrumbs') ?>
+                    </header>
+                    
+                    <div class="row">
+                        <div class="span3">
+                                <?php echo $this->getChildHtml('left') ?>
+                        </div>
+                        <div class="span6">
+                                <?php echo $this->getChildHtml('global_messages') ?>
+                                <?php echo $this->getChildHtml('content') ?>
+                        </div>
+                        <div class="span3">
+                                <?php echo $this->getChildHtml('right') ?>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <?php echo $this->getChildHtml('footer') ?>
+                <?php echo $this->getChildHtml('global_notices') ?>
+            </div>
+        </footer>
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        <script src="<?php echo $this->getSkinUrl('js/jquery.js'); ?>"></script>
+
+        <script src="<?php echo $this->getSkinUrl('js/google-code-prettify/prettify.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-transition.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-alert.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-modal.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-dropdown.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-scrollspy.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-tab.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-tooltip.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-popover.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-button.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-collapse.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-carousel.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-typeahead.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/application.js'); ?>"></script>
+
+        <?php echo $this->getChildHtml('before_body_end') ?>
+
+    </body>
+</html>

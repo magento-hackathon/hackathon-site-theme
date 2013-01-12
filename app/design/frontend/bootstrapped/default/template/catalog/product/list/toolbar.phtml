@@ -1,0 +1,79 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+/* @var $this Mage_Catalog_Block_Product_List_Toolbar */
+?>
+
+<?php if($this->getCollection()->getSize()): ?>
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="btn-toolbar thumbnail">
+
+                <div class="btn-group pull-right">
+                    <?php if( $this->isEnabledViewSwitcher() ): ?>
+                    <?php $_modes = $this->getModes(); ?>
+                    <?php if($_modes && count($_modes)>1): ?>
+                        <?php foreach ($this->getModes() as $_code=>$_label): ?>
+                            <?php if($this->isModeActive($_code)): ?>
+                                <a href="#" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?> btn btn-inverse active"><span class="icon-<?php echo strtolower($_code); ?> icon-white"></span></a>
+                                <?php else: ?>
+                                <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?> btn"><span class="icon-<?php echo strtolower($_code); ?>"></span></a>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div><!-- /btn-group -->
+
+                <div class="btn-group">
+                    <button class="btn"><?php echo $this->__('Show') ?></button>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                    <ul class="dropdown-menu" onchange="setLocation(this.value)">
+                        <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                        <li <?php if($this->isLimitCurrent($_key)): ?> class="active" <?php endif ?>>
+                            <a href="<?php echo $this->getLimitUrl($_key) ?>"><?php echo $_limit ?> <?php echo $this->__('per page') ?></a>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div><!-- /btn-group -->
+
+                <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+                <div class="btn-group">
+                    <a class="btn <?php if($this->isOrderCurrent($_key)): ?>btn-primary disabled<?php endif; ?>" href="<?php echo $this->getOrderUrl($_key, 'asc') ?>"><?php echo $this->__($_order) ?></a>
+                </div><!-- /btn-group -->
+                <?php endforeach; ?>
+
+                <div class="btn-group">
+                    <?php if($this->getCurrentDirection() == 'desc'): ?>
+                    <a class="btn" href="<?php echo $this->getOrderUrl(null, 'asc') ?>" title="<?php echo $this->__('Set Ascending Direction') ?>">
+                        <span class="icon-arrow-down"></span>
+                    </a>
+                    <?php else: ?>
+                    <a class="btn" href="<?php echo $this->getOrderUrl(null, 'desc') ?>" title="<?php echo $this->__('Set Descending Direction') ?>">
+                        <span class="icon-arrow-up"></span>
+                    </a>
+                    <?php endif; ?>
+                </div><!-- /btn-group -->
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<?php endif ?>

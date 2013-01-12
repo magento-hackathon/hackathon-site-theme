@@ -1,0 +1,126 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+/* @var $this Mage_Wishlist_Block_Customer_Sidebar */
+?>
+<script>
+function decorateGenericActive(elements, decorateParams)
+{
+    var allSupportedParams = ['odd', 'even', 'first', 'last', 'active'];
+    var _decorateParams = {};
+    var total = elements.length;
+
+    if (total) {
+        // determine params called
+        if (typeof(decorateParams) == 'undefined') {
+            decorateParams = allSupportedParams;
+        }
+        if (!decorateParams.length) {
+            return;
+        }
+        for (var k in allSupportedParams) {
+            _decorateParams[allSupportedParams[k]] = false;
+        }
+        for (var k in decorateParams) {
+            _decorateParams[decorateParams[k]] = true;
+        }
+
+        // decorate elements
+        // elements[0].addClassName('first'); // will cause bug in IE (#5587)
+        if (_decorateParams.active) {
+            Element.addClassName(elements[0], 'active');
+        }
+        if (_decorateParams.first) {
+            Element.addClassName(elements[0], 'first');
+        }
+        if (_decorateParams.last) {
+            Element.addClassName(elements[total-1], 'last');
+        }
+        for (var i = 0; i < total; i++) {
+            if ((i + 1) % 2 == 0) {
+                if (_decorateParams.even) {
+                    Element.addClassName(elements[i], 'even');
+                }
+            }
+            else {
+                if (_decorateParams.odd) {
+                    Element.addClassName(elements[i], 'odd');
+                }
+            }
+        }
+    }
+}
+    
+</script>
+<?php if ($this->helper('wishlist')->isAllow()) : ?>
+<div class="block block-wishlist well">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('My Wishlist <small>(%d)</small>', $this->getItemCount()) ?></span></strong>
+    </div>
+    <div class="block-content">
+    <p class="block-subtitle"><?php echo $this->__('Last Added Items') ?></p>
+    <?php if ($this->hasWishlistItems()): ?>
+    <div class="" id="wishlist-sidebar">
+        <div class="">
+                                <div id="wishlistCarousel" class="carousel slide">
+                        <div class="carousel-inner">
+            <?php foreach ($this->getWishlistItems() as $_item): ?>
+                <?php $product = $_item->getProduct(); ?>
+
+                                <dl class="item">
+                                    <a class="product-image" href="<?php echo $this->getProductUrl($_item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(250); ?>" width="250" height="250" alt="<?php echo $this->escapeHtml($product->getName()) ?>" /></a>
+                                    <div class="carousel-caption">
+                      	<div class="modal hide fade" id="<?php echo $this->escapeHtml($product->getId())?>" style="display: none;">
+                            <div class="modal-header">
+                                <a class="close" data-dismiss="modal">×</a>
+                                <h3><?php echo $this->__('Are you sure you would like to remove this item from the wishlist?') ?></h3>
+                            </div>
+                            <div class="modal-body">
+                                    <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(300); ?>" width="300" height="300" alt="<?php echo $this->escapeHtml($product->getName()) ?>" />
+                                <h6 class="label label-info"><?php echo $this->escapeHtml($product->getName()) ?></h6>
+                            </div>
+                                <div class="modal-footer">
+                                <a href="#" class="btn close" data-dismiss="modal"><?php echo $this->__('Cancel') ?></a>
+                                <a href="<?php echo $this->getItemRemoveUrl($_item) ?>" class="btn btn-warning"><?php echo $this->__('Remove This Item') ?></a>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class=""><a class="pull-right" data-toggle="modal" href="#<?php echo $this->escapeHtml($product->getId())?>" title="<?php echo $this->__('Remove This Item') ?>" ><span class="icon-remove-circle"></span></a></div>
+                            <div class="span1"><?php if ($product->isSaleable() && $product->isVisibleInSiteVisibility()): ?>
+                                <a href="<?php echo $this->getItemAddToCartUrl($_item) ?>" class="btn btn-mini btn-success pull-right"><?php echo $this->__('Add to Cart') ?></a>
+                            <?php endif; ?></div>
+                            <div class="span1"><strong class="label label-info pull-right"><?php echo $this->getPriceHtml($product, false, '-wishlist') ?></strong></div>
+                            
+                        </div>
+                        
+
+                            
+                                    </div>
+                                </dl>
+
+            <?php endforeach; ?>
+                                        </div>
+                        <a class="carousel-control left" href="#wishlistCarousel" data-slide="prev">‹</a>
+                        <a class="carousel-control right" href="#wishlistCarousel" data-slide="next">›</a>
+                    </div>
+            <script type="text/javascript">decorateGenericActive($$('#wishlistCarousel dl'), ['active']);</script>
+
+        </div>
+    </div>
+    <div class="actions">
+        <a class="label" href="<?php echo $this->helper('wishlist')->getListUrl() ?>"><?php echo $this->__('Go to Wishlist') ?></a>
+    </div>
+    <?php else: ?>
+        <p class="empty"><?php echo $this->__('You have no items in your wishlist.') ?></p>
+    <?php endif ?>
+    </div>
+</div>
+<?php endif ?>

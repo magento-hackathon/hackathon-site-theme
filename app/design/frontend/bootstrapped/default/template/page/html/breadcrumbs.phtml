@@ -1,0 +1,36 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+
+<?php if($crumbs && is_array($crumbs)): ?>
+<div class="breadcrumbs subnav">
+    <ul class="nav nav-pills"> 
+        <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+            <?php if($_crumbInfo['link']): ?>
+                <li class="<?php echo $_crumbName ?>">
+                	<a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->htmlEscape($_crumbInfo['title']) ?>">
+                		<?php if($_crumbInfo['first']):?><span class="icon-home"></span><?php else: ?><?php echo $this->htmlEscape($_crumbInfo['label']) ?><?php endif; ?>
+                	</a>
+                </li>
+            <?php elseif($_crumbInfo['last']): ?>
+                <li class="<?php echo $_crumbName ?> active"><a href="#" title="<?php echo $this->htmlEscape($_crumbInfo['title']) ?>"><?php echo $this->htmlEscape($_crumbInfo['label']) ?></a></li>
+            <?php else: ?>
+                <?php echo $this->htmlEscape($_crumbInfo['label']) ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        
+        <?php echo $this->getChildHtml('catalog.leftnav.breadcrumbs') ?>
+        
+    </ul>
+    
+</div>
+<?php endif; ?>
+

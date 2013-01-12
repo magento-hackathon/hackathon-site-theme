@@ -1,0 +1,99 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php
+/**
+ * Cart cross sell items template
+ *
+ * @see Mage_Checkout_Block_Cart_Crosssell
+ */
+?>
+<script>
+function decorateGenericActive(elements, decorateParams)
+{
+    var allSupportedParams = ['odd', 'even', 'first', 'last', 'active'];
+    var _decorateParams = {};
+    var total = elements.length;
+
+    if (total) {
+        // determine params called
+        if (typeof(decorateParams) == 'undefined') {
+            decorateParams = allSupportedParams;
+        }
+        if (!decorateParams.length) {
+            return;
+        }
+        for (var k in allSupportedParams) {
+            _decorateParams[allSupportedParams[k]] = false;
+        }
+        for (var k in decorateParams) {
+            _decorateParams[decorateParams[k]] = true;
+        }
+
+        // decorate elements
+        // elements[0].addClassName('first'); // will cause bug in IE (#5587)
+        if (_decorateParams.active) {
+            Element.addClassName(elements[0], 'active');
+        }
+        if (_decorateParams.first) {
+            Element.addClassName(elements[0], 'first');
+        }
+        if (_decorateParams.last) {
+            Element.addClassName(elements[total-1], 'last');
+        }
+        for (var i = 0; i < total; i++) {
+            if ((i + 1) % 2 == 0) {
+                if (_decorateParams.even) {
+                    Element.addClassName(elements[i], 'even');
+                }
+            }
+            else {
+                if (_decorateParams.odd) {
+                    Element.addClassName(elements[i], 'odd');
+                }
+            }
+        }
+    }
+}
+    
+</script>
+<?php if($this->getItemCount()): ?>
+    <div class="well">
+        <div class="crosssell">
+            <h2><?php echo $this->__('Based on your selection, you may be interested in the following items:') ?></h2>
+                <div id="myCarousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            <?php foreach ($this->getItems() as $_item): ?>
+                                <dl class="item">
+                                    <a class="product-image" href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(600); ?>" width="600" height="600" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a>
+                                    <div class="carousel-caption">
+                                        <h3 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></h3>
+                                        <span class="label label-info pull-right"><?php echo $this->getPriceHtml($_item, true) ?></span>
+                                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn btn-primary" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                            <p><?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                                <a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+                                            <?php endif; ?>
+                                            <?php if($_compareUrl=$this->getAddToCompareUrl($_item)): ?>
+                                                <span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a>
+                                            <?php endif; ?>
+                                                </p>
+                                    </div>
+                                </dl>
+                            <?php endforeach; ?>
+                        </div>
+                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+                        <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+                    </div>
+            <script type="text/javascript">decorateGenericActive($$('#myCarousel dl'), ['active']);</script>
+        </div>
+    </div>
+<?php endif; ?>
+

@@ -1,0 +1,87 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<div class="block block-progress opc-block-progress">
+    <div class="block-title well alert-success">
+        <strong><span><?php echo $this->__('Your Checkout Progress') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <dl>
+        <?php if ($this->getCheckout()->getStepData('billing', 'is_show')): ?>
+        <?php if($this->getCheckout()->getStepData('billing', 'complete')): ?>
+            <div class="well alert-success">
+                <?php echo $this->__('Billing Address') ?> <span class="separator">|</span> <a href="#billing" onclick="checkout.accordion.openSection('opc-billing'); return false;"><?php echo $this->__('Change') ?></a>
+                <address><?php echo $this->getBilling()->format('html') ?></address>
+            </div>
+        <?php else: ?>
+            <dt class="well alert-info">
+                <?php echo $this->__('Billing Address') ?>
+            </dt>
+        <?php endif; ?>
+        <?php endif; ?>
+
+        <?php if ($this->getCheckout()->getStepData('shipping', 'is_show')): ?>
+        <?php if($this->getCheckout()->getStepData('shipping', 'complete')): ?>
+            <div class="well alert-success">
+                <?php echo $this->__('Shipping Address') ?> <span class="separator">|</span> <a href="#payment" onclick="checkout.accordion.openSection('opc-shipping');return false;"><?php echo $this->__('Change') ?></a>
+                <address><?php echo $this->getShipping()->format('html') ?></address>
+            </div>
+        <?php else: ?>
+            <dt class="well alert-info">
+                <?php echo $this->__('Shipping Address') ?>
+            </dt>
+        <?php endif; ?>
+        <?php endif; ?>
+
+        <?php if ($this->getCheckout()->getStepData('shipping_method', 'is_show')): ?>
+        <?php if($this->getCheckout()->getStepData('shipping_method', 'complete')): ?>
+            <div class="well alert-success">
+                <?php echo $this->__('Shipping Method') ?> <span class="separator">|</span> <a href="#shipping_method" onclick="checkout.accordion.openSection('opc-shipping_method'); return false;"><?php echo $this->__('Change') ?></a>
+                <?php if ($this->getShippingMethod()): ?>
+                    <?php echo $this->getShippingDescription() ?>
+
+                    <?php $_excl = $this->getShippingPriceExclTax(); ?>
+                    <?php $_incl = $this->getShippingPriceInclTax(); ?>
+                    <?php if ($this->helper('tax')->displayShippingPriceIncludingTax()): ?>
+                        <?php echo $_incl; ?>
+                    <?php else: ?>
+                        <?php echo $_excl; ?>
+                    <?php endif; ?>
+                    <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                        (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                    <?php endif; ?>
+
+                <?php else: ?>
+                    <?php echo $this->__('Shipping method has not been selected yet') ?>
+                <?php endif; ?>
+            </div>
+        <?php else: ?>
+            <dt class="well alert-info">
+                <?php echo $this->__('Shipping Method') ?>
+            </dt>
+        <?php endif; ?>
+        <?php endif; ?>
+
+        <?php if ($this->getCheckout()->getStepData('payment', 'is_show')): ?>
+        <?php if($this->getCheckout()->getStepData('payment', 'complete')): ?>
+            <div class="well alert-success">
+                <?php echo $this->__('Payment Method') ?> <span class="separator">|</span> <a href="#payment" onclick="checkout.accordion.openSection('opc-payment'); return false;"><?php echo $this->__('Change') ?></a>
+                <?php echo $this->getPaymentHtml() ?>
+            </div>
+        <?php else: ?>
+            <dt class="well alert-info">
+                <?php echo $this->__('Payment Method') ?>
+            </dt>
+        <?php endif; ?>
+        <?php endif; ?>
+        </dl>
+    </div>
+</div>

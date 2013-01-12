@@ -1,0 +1,22 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php if(count($this->getStores())>1): ?>
+<div class="form-language">
+    <label for="select-language"><?php echo $this->__('Your Language:') ?></label>
+    <select id="select-language" title="<?php echo $this->__('Your Language') ?>" onchange="window.location.href=this.value" class="flags">
+    <?php foreach ($this->getStores() as $_lang): ?>
+        <?php $_selected = ($_lang->getId() == $this->getCurrentStoreId()) ? ' selected="selected"' : '' ?>
+        <option value="<?php echo $_lang->getCurrentUrl() ?>" style="background-image:url('<?php echo $this->getSkinUrl('images/flags/flag_'.$_lang->getCode().'.gif') ?>');"<?php echo $_selected ?>><?php echo $this->htmlEscape($_lang->getName()) ?></option>
+    <?php endforeach; ?>
+    </select>
+</div>
+<?php endif; ?>

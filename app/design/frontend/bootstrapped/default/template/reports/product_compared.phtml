@@ -1,0 +1,26 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+/* @var $this Mage_Reports_Block_Product_Compared */
+?>
+<?php if ($_products = $this->getRecentlyComparedProducts()): ?>
+<div class="block block-list block-compared well">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Recently Compared Products') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <?php foreach ($_products as $_item): ?>
+            <div class="item">
+                <p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName() , 'name') ?></a></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php endif; ?>

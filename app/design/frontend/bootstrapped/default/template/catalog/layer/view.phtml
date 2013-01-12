@@ -1,0 +1,37 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+<?php if($this->canShowBlock()): ?>
+<!-- <div class="breadcrumbs subnav"> -->
+        <?php if($this->canShowOptions()): ?>
+<!--                 <ul class="nav nav-pills pull-right"> -->
+<!--                    <li class="active offset1"><a title="" href="#">--><?php //echo $this->__('Shopping Options') ?><!--<span class="icon-chevron-right"></span></a></li>-->
+                    <?php $_filters = $this->getFilters() ?>
+                    <?php foreach ($_filters as $_filter): ?>
+                        <?php if($_filter->getItemsCount()): ?>
+                              <li class="dropdown">
+                                  <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="label label-info"><?php echo $this->__($_filter->getName()) ?></span><b class="caret"></b></a>
+                                    <?php echo $_filter->getHtml() ?>
+                              </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php echo $this->getStateHtml() ?>
+<!--                 </ul> -->
+        <?php endif; ?>
+<!-- </div> -->
+<?php endif; ?>

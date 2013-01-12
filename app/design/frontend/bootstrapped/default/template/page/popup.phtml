@@ -1,0 +1,51 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body class="page-popup<?php echo $this->getBodyClass()?$this->getBodyClass() : ''?>">
+<div>
+    <?php echo $this->getChildHtml('after_body_start') ?>
+    <?php echo $this->getChildHtml('content') ?>
+</div>
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        <script src="<?php echo $this->getSkinUrl('js/jquery.js'); ?>"></script>
+
+        <script src="<?php echo $this->getSkinUrl('js/google-code-prettify/prettify.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-transition.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-alert.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-modal.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-dropdown.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-scrollspy.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-tab.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-tooltip.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-popover.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-button.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-collapse.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-carousel.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/bootstrap-typeahead.js'); ?>"></script>
+        <script src="<?php echo $this->getSkinUrl('js/application.js'); ?>"></script>
+
+        <?php echo $this->getChildHtml('before_body_end') ?>
+
+</body>
+</html>

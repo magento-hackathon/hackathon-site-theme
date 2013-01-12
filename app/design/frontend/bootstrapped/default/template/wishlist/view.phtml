@@ -1,0 +1,143 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+/* @var $this Mage_Wishlist_Block_Customer_Wishlist */
+?>
+<?php if ($this->helper('wishlist')->isAllow()) : ?>
+<div class="my-wishlist">
+    <div class="page-title title-buttons well">
+        <?php if ($this->helper('wishlist')->isRssAllow() && $this->hasWishlistItems()): ?>
+            <a href="<?php echo $this->helper('wishlist')->getRssUrl(); ?>" class="link-rss pull-right"><?php echo $this->__('RSS Feed') ?></a>
+        <?php endif; ?>
+        <h1><?php echo $this->__('My Wishlist') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php if ($this->hasWishlistItems()): ?>
+    <form id="wishlist-view-form" action="<?php echo $this->getUrl('*/*/update') ?>" method="post" class="form-horizontal">
+        <fieldset>
+            <?php echo $this->getBlockHtml('formkey')?>
+            <table class="table table-striped table-bordered table-condensed" id="wishlist-table">
+                <thead>
+                    <tr>
+                        <th><?php echo $this->__('Product') ?></th>
+                        <th><?php echo $this->__('Comment') ?></th>
+                        <th class="a-center span2"><span class="nobr"><?php echo $this->__('Added On') ?></span></th>
+                        <th class="a-center span2"><span class="nobr"><?php echo $this->__('Add to Cart') ?></span></th>
+                        <th class="a-center span2">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($this->getWishlistItems() as $item): ?>
+                    <?php
+                        $product = $item->getProduct();
+                        $isVisibleProduct = $product->isVisibleInSiteVisibility();
+                    ?>
+                    <tr>
+                        <td>
+                            <a class="product-image" href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(113, 113); ?>" width="113" height="113" alt="<?php echo $this->escapeHtml($product->getName()) ?>" /></a>
+                            <h6 class="product-name"><a href="<?php echo $this->getProductUrl($item) ?>"><?php echo $this->escapeHtml($product->getName()) ?></a></h6>
+                            <?php echo $this->getPriceHtml($product) ?>
+                            <?php echo $this->getDetailsHtml($item) ?>
+                        </td>
+                        <td>
+                            <textarea name="description[<?php echo $item->getWishlistItemId() ?>]" rows="3" cols="5" onfocus="focusComment(this)" onblur="focusComment(this)" title="<?php echo $this->__('Comment') ?>"><?php echo $this->getCommentValue($item); ?></textarea>
+                        </td>
+                        <td>
+                            <span class="nobr"><?php echo $this->getFormatedDate($item->getAddedAt()) ?></span>
+                        </td>
+                        <td class="a-center">
+                        <?php if ($item->canHaveQty() && $isVisibleProduct): ?>
+                            <p><input type="text" class="span2 qty" name="qty[<?php echo $item->getId() ?>]" value="<?php echo $this->getAddToCartQty($item) * 1 ?>" /></p>
+                        <?php endif; ?>
+                        <?php if ($product->isSaleable()): ?>
+                            <?php if ($isVisibleProduct): ?>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" onclick="addWItemToCart(<?php echo $item->getId(); ?>)" class="btn pull-right btn-mini btn-danger"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <?php endif ?>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                            <?php if ($isVisibleProduct): ?>
+                            <p>
+                                <span class="icon-edit"></span>
+                                <a href="<?php echo $this->getItemConfigureUrl($item) ?>"><?php echo $this->__('Edit') ?></a>
+                            </p>
+                            <?php endif ?>
+                        </td>
+                        <td><span class="icon-trash"></span>
+                            <a href="<?php echo $this->getItemRemoveUrl($item) ?>" title="<?php echo $this->__('Remove Item') ?>" onclick="return confirmRemoveWishlistItem();" class="btn-remove btn-remove2"><?php echo $this->__('Remove item')?></a>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+            <script type="text/javascript">decorateTable('wishlist-table')</script>
+            <div class="">
+                <div class="pull-right">
+                    <button type="submit" onclick="this.name='save_and_share'" title="<?php echo $this->__('Share Wishlist') ?>" class="btn btn-share"><span><span><?php echo $this->__('Share Wishlist') ?></span></span></button>
+                    <?php if($this->isSaleable()):?>
+                        <button type="button" title="<?php echo $this->__('Add All to Cart') ?>" onclick="addAllWItemsToCart()" class="btn btn-add btn-danger"><span><span><?php echo $this->__('Add All to Cart') ?></span></span></button>
+                    <?php endif;?>
+                    <button type="submit" title="<?php echo $this->__('Update Wishlist') ?>" onclick="this.name='do'" class="btn btn-update"><span><span><?php echo $this->__('Update Wishlist') ?></span></span></button>
+                </div>
+                <div class="buttons-set">
+                    <p class="back-link">
+                        <span class="icon-backward"></span>
+                        <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><?php echo $this->__('Back') ?></a>
+                    </p>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <?php else: ?>
+        <p><?php echo $this->__('You have no items in your wishlist.') ?></p>
+    <?php endif ?>
+    <script type="text/javascript">
+    //<![CDATA[
+    function confirmRemoveWishlistItem() {
+        return confirm('<?php echo $this->__('Are you sure you want to remove this product from your wishlist?') ?>');
+    }
+
+    function focusComment(obj) {
+        if( obj.value == '<?php echo $this->helper('wishlist')->defaultCommentString() ?>' ) {
+            obj.value = '';
+        } else if( obj.value == '' ) {
+            obj.value = '<?php echo $this->helper('wishlist')->defaultCommentString() ?>';
+        }
+    }
+
+    function addWItemToCart(itemId) {
+        var url = '<?php echo $this->getItemAddToCartUrl('%item%') ?>';
+        url = url.gsub('%item%', itemId);
+        var form = $('wishlist-view-form');
+        if (form) {
+            var input = form['qty[' + itemId + ']'];
+            if (input) {
+                var separator = (url.indexOf('?') >= 0) ? '&' : '?';
+                url += separator + input.name + '=' + encodeURIComponent(input.value);
+            }
+        }
+        setLocation(url);
+    }
+
+    function addAllWItemsToCart() {
+        var url = '<?php echo $this->getUrl('*/*/allcart') ?>';
+        var separator = (url.indexOf('?') >= 0) ? '&' : '?';
+        $$('#wishlist-view-form .qty').each(
+            function (input, index) {
+                url += separator + input.name + '=' + encodeURIComponent(input.value);
+                separator = '&';
+            }
+        );
+        setLocation(url);
+    }
+    //]]>
+    </script>
+</div>
+<?php endif ?>

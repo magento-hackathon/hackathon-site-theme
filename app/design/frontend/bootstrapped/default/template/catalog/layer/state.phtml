@@ -1,0 +1,39 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php
+/**
+ * Category layered navigation state
+ *
+ * @see Mage_Catalog_Block_Layer_State
+ */
+?>
+<?php $_filters = $this->getActiveFilters() ?>
+<?php if(!empty($_filters)): ?>
+
+    <?php foreach ($_filters as $_filter): ?>
+<li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="label label-warning"><span class="icon-remove"></span> <?php echo $this->__($_filter->getName()) ?></span><b class="caret"></b></a>
+    <ol class="dropdown-menu">
+        <li>
+            <a href="<?php echo $_filter->getRemoveUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>" class="btn-remove">
+                <span class="label"><?php echo $this->__($_filter->getName()) ?>:</span> <?php echo $this->stripTags($_filter->getLabel()) ?>
+            </a>
+
+        </li>
+            </ol>
+    </li>
+    <?php endforeach; ?>
+
+    <li class="actions"><a href="<?php echo $this->getClearUrl() ?>" title="<?php echo $this->__('Clear All') ?>"><span class="icon-remove"></span></a></li>
+<?php endif; ?>
+
+    

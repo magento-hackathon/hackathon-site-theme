@@ -1,0 +1,53 @@
+<?php
+/**
+ * Magento responsive theme
+ *
+ * @category    design
+ * @package     bootstrapped_default
+ * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Vedran Subotic <vedran@magenthon.com>
+ */
+?>
+<?php if(isset($poll)) : ?>
+<script type="text/javascript">
+//<![CDATA[
+    function validatePollAnswerIsSelected()
+    {
+        var options = $$('input.poll_vote');
+        for( i in options ) {
+            if( options[i].checked == true ) {
+                return true;
+            }
+        }
+        return false;
+    }
+//]]>
+</script>
+<div class="block block-poll well alert-info">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Community Poll') ?></span></strong>
+    </div>
+    <form id="pollForm" action="<?php echo $action ?>" method="post" onsubmit="return validatePollAnswerIsSelected();" class="form">
+        <fieldset>
+            <p class="block-subtitle"><?php echo $this->htmlEscape($poll->getPollTitle()); ?></p>
+            <?php if( $poll_answers ): ?>
+                <?php foreach( $poll_answers as $answer ): ?>
+                    <div class="poll-answers">
+
+                            
+<label class="radio" for="vote_<?php echo $answer->getId() ?>">
+    <input type="radio" name="vote" class="radio poll_vote" id="vote_<?php echo $answer->getId() ?>" value="<?php echo $answer->getAnswerId() ?>" />
+    <?php echo $this->htmlEscape($answer->getAnswerTitle()) ?>
+</label>
+                    </div>
+                <?php endforeach; ?>
+
+<!--            <script type="text/javascript">decorateList('poll-answers');</script>-->
+            <?php endif; ?>
+            <button type="submit" title="<?php echo $this->__('Vote') ?>" class="btn btn-inverse pull-right"><span><span><?php echo $this->__('Vote') ?></span></span></button>
+        </fieldset>
+    </form>
+</div>
+<?php endif; ?>
+
