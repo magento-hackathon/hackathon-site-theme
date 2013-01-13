@@ -1,16 +1,5 @@
 <?php
 /**
- * Magento responsive theme
- *
- * @category    design
- * @package     bootstrapped_default
- * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- * @author      Vedran Subotic <vedran@magenthon.com>
- */
-?>
-<?php
-/**
  * Category view template
  *
  * @see Mage_Catalog_Block_Category_View
@@ -30,11 +19,11 @@
     $_items = Mage::getBlockSingleton('catalog/product_list')->getLoadedProductCollection();
 ?>
 
-<div class="page-title category-title well page-header">
+<div class="page-title category-title">
     <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
         <a href="<?php echo $this->getRssLink() ?>" class="pull-right"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
     <?php endif; ?>
-    <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name')?> <small>(<?php echo $_items->getSize()?>)</small></h1>
+    <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name')?></h1>
 </div>
 
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>

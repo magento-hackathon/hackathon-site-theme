@@ -10,6 +10,10 @@ footer .nav li { float: right; margin-right: 10px }
 .shopping-cart-totals tbody td { border-top: none; border-bottom: 1px solid #dddddd }
 .account-login .form-actions, .account-login form { margin-bottom: 0; padding-bottom: 0 }
 .control-pre-filled { padding-top: 5px }
+.catalog-product-view .thumbnail { padding: 15px }
+.catalog-product-view p { margin: 0 }
+.show-per-page { text-align: right; margin-bottom: 10px }
+.show-per-page label { display: inline; position: relative; top: -3px }
 
 .block-cart .form-horizontal .control-group .control-label {
 	width: 50px !important;
@@ -22,10 +26,6 @@ footer .nav li { float: right; margin-right: 10px }
 }
 .block-related .form-horizontal .controls {
 	margin-left: 60px;
-}
-.amount {
-	margin-left: 10px;
-	margin-top: 5px;
 }
 .toolbar .the-icons {
     vertical-align: middle;

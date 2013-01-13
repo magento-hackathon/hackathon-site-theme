@@ -1,19 +1,12 @@
 <?php
 /**
- * Magento responsive theme
- *
- * @category    design
- * @package     bootstrapped_default
- * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- * @author      Vedran Subotic <vedran@magenthon.com>
- */
-
-/**
  * Product view template
  *
  * @see Mage_Catalog_Block_Product_View
  * @see Mage_Review_Block_Product_View
+ *
+ * @var $this Mage_Catalog_Block_Product_View
+ * @var $_helper Mage_Catalog_Helper_Output
  */
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
@@ -34,30 +27,25 @@
                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
             </div>
 
-					            <?php echo $this->getChildHtml('alert_urls') ?>
-					            <?php echo $this->getChildHtml('product_type_data') ?>
-                                <?php echo $this->getChildHtml('extrahint') ?>
+            <?php echo $this->getChildHtml('alert_urls') ?>
+            <?php echo $this->getChildHtml('product_type_data') ?>
+            <?php echo $this->getChildHtml('extrahint') ?>
 
-					            <?php if (!$this->hasOptions()):?>
-                                    <?php echo $this->getTierPriceHtml() ?>
-					                <div class="add-to-box">
-					                    <?php if($_product->isSaleable()): ?>
-					                        <?php echo $this->getChildHtml('addtocart') ?>
-					                    <?php endif; ?>
-					                </div>
-					                <?php echo $this->getChildHtml('extra_buttons') ?>
-					            <?php elseif (!$_product->isSaleable()): ?>
-                                    <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
-					            <?php endif; ?>
-					
-					            <?php echo $this->getChildHtml('other');?>
-					
-					            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-					                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-					            <?php endif;?>
+            <?php if (!$this->hasOptions()):?>
+                <?php echo $this->getTierPriceHtml() ?>
+                <div class="add-to-box">
+                    <?php if($_product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                    <?php endif; ?>
+                </div>
+                <?php echo $this->getChildHtml('extra_buttons') ?>
+            <?php endif; ?>
 
+            <?php echo $this->getChildHtml('other');?>
 
-
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+            <?php endif;?>
 
         <div class="clearer"></div>
         <?php if ($_product->isSaleable() && $this->hasOptions()):?>
@@ -111,15 +99,19 @@
     </div>
 
     <div class="product-collateral">
-<?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+        <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
         <div class="box-collateral <?php echo "box-{$alias}"?>">
             <?php if ($title = $this->getChildData($alias, 'title')):?>
             <h2><?php echo $this->escapeHtml($title); ?></h2>
             <?php endif;?>
             <?php echo $html; ?>
         </div>
-<?php endforeach;?>
+        <?php endforeach;?>
         <?php echo $this->getChildHtml('upsell_products') ?>
         <?php echo $this->getChildHtml('product_additional_data') ?>
+        <?php if (!$_product->isSaleable()): ?>
+            <br/>
+            <div class="thumbnail"><?php echo $this->getReviewsSummaryHtml($_product, false, true)?></div>
+        <?php endif; ?>
     </div>
 </div>

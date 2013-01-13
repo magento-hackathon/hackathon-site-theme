@@ -1,16 +1,5 @@
 <?php
 /**
- * Magento responsive theme
- *
- * @category    design
- * @package     bootstrapped_default
- * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- * @author      Vedran Subotic <vedran@magenthon.com>
- */
-?>
-<?php
-/**
  * Pager template
  *
  * @see Mage_Page_Block_Html_Pager
@@ -20,9 +9,9 @@
 ?>
 <?php if($this->getCollection()->getSize()): ?>
 
-    <?php if($this->getUseContainer()): ?>
-    <div class="">
-    <?php endif ?>
+<div class="row-fluid">
+
+    <div class="span6">
 
     <?php if($this->getShowAmounts()): ?>
     <p class="amount">
@@ -34,18 +23,22 @@
     </p>
     <?php endif ?>
 
+    </div>
+    <div class="span6 show-per-page">
+
     <?php if($this->getShowPerPage()): ?>
-    <div class="input-prepend">
-        <span class="add-on"><?php echo $this->__('Show') ?></span>
-        <select class="span2" onchange="setLocation(this.value)">
+        <label for="items-per-page"><?php echo $this->__('Show') ?></label>
+        <select id="items-per-page" class="span2" onchange="setLocation(this.value)">
         <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
             <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
                 <?php echo $_limit ?> <?php echo $this->__('per page') ?>
             </option>
         <?php endforeach; ?>
         </select>
-    </div>
     <?php endif ?>
+
+    </div>
+    <div class="span6">
 
     <?php if($this->getLastPageNum()>1): ?>
     <div class="pagination pagination-centered">
@@ -103,8 +96,8 @@
     </div>
     <?php endif; ?>
 
-    <?php if($this->getUseContainer()): ?>
     </div>
-    <?php endif ?>
+
+</div>
 
 <?php endif ?>
