@@ -1,28 +1,32 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
-<!--
+    <!--
 Default layout, loads most of the pages
 -->
 
     <default>
         <reference name="left">
             <block type="catalog/navigation" name="catalog.leftnav.custom" before="wordpress_sidebar_left" template="catalog/navigation/left.custom.phtml"/>
-            <action method="unsetChild"><name>left.permanent.callout</name></action>
+            <action method="unsetChild">
+                <name>left.permanent.callout</name>
+            </action>
         </reference>
 
         <reference name="right">
-            <action method="unsetChild"><name>right.permanent.callout</name></action>
+            <action method="unsetChild">
+                <name>right.permanent.callout</name>
+            </action>
             <remove name="paypal.partner.right.logo"/>
         </reference>
 
         <reference name="root">
-            <remove name="global_messages" />
+            <remove name="global_messages"/>
         </reference>
         <reference name="content">
-            <block type="core/template" name="alert_global_messages" template="core/messages.phtml" before="-" />
+            <block type="core/template" name="alert_global_messages" template="core/messages.phtml" before="-"/>
         </reference>
         <reference name="before_body_end">
-            <block type="core/template" name="jquery_noconflict" template="jquery/noconflict.phtml" before="-" />
+            <block type="core/template" name="jquery_noconflict" template="jquery/noconflict.phtml" before="-"/>
         </reference>
         <reference name="top.links">
             <remove name="wishlist_link"/>
@@ -31,43 +35,82 @@ Default layout, loads most of the pages
             <action method="addLink" translate="label title" module="cms"><label>What is a Hackathon?</label><url>about</url><title>What is a Hackathon?</title><prepare/><urlParams/><position>5</position></action>
         </reference>
         <reference name="footer_links">
-            <action method="removeLinkByUrl"><url helper="catalogsearch/getAdvancedSearchUrl"/></action>
-            <action method="removeLinkByUrl"><url helper="catalog/map/getCategoryUrl"/></action>
-            <action method="removeLinkByUrl"><url helper="catalogsearch/getSearchTermUrl"/></action>
-            <action method="removeLinkByUrl"><url>contacts</url></action>
+            <action method="removeLinkByUrl">
+                <url helper="catalogsearch/getAdvancedSearchUrl"/>
+            </action>
+            <action method="removeLinkByUrl">
+                <url helper="catalog/map/getCategoryUrl"/>
+            </action>
+            <action method="removeLinkByUrl">
+                <url helper="catalogsearch/getSearchTermUrl"/>
+            </action>
+            <action method="removeLinkByUrl">
+                <url>contacts</url>
+            </action>
             <remove name="return_link"/>
             <remove name="cms_footer_links"/>
-            <action method="addLink" translate="label title" module="cms"><label>Imprint</label><url>imprint</url><title>Imprint</title><prepare/></action>
-            <action method="addLink" translate="label title" module="cms"><label>Home</label><url/><title>Home</title><prepare>true</prepare></action>
+            <action method="addLink" translate="label title" module="cms">
+                <label>Imprint</label>
+                <url>imprint</url>
+                <title>Imprint</title>
+                <prepare/>
+            </action>
+            <action method="addLink" translate="label title" module="cms">
+                <label>Home</label>
+                <url/>
+                <title>Home</title>
+                <prepare>true</prepare>
+            </action>
         </reference>
     </default>
 
     <customer_account>
-        <remove name="catalog.leftnav.custom" />
+        <remove name="catalog.leftnav.custom"/>
     </customer_account>
 
     <catalog_category_default translate="label">
-        <remove name="catalog.leftnav" />
+        <remove name="catalog.leftnav"/>
         <reference name="breadcrumbs">
             <block type="catalog/layer_view" name="catalog.leftnav.breadcrumbs" after="currency" template="catalog/layer/view.phtml"/>
         </reference>
     </catalog_category_default>
-    
+
     <catalog_category_layered translate="label">
-        <remove name="catalog.leftnav" />
+        <remove name="catalog.leftnav"/>
         <reference name="breadcrumbs">
             <block type="catalog/layer_view" name="catalog.leftnav.breadcrumbs" after="currency" template="catalog/layer/view.phtml"/>
         </reference>
     </catalog_category_layered>
 
+    <catalog_product_view>
+        <reference name="root">
+            <remove name="breadcrumbs"/>
+        </reference>
+        <reference name="right">
+            <block type="catalog/product_gallery" template="catalog/product/gallery.phtml" before="-"/>
+            <remove name="right.reports.product.viewed"/>
+            <remove name="right.reports.product.compared"/>
+            <remove name="catalog.compare.sidebar"/>
+            <remove name="right.poll"/>
+        </reference>
+        <reference name="product.info">
+            <remove name="product.info.media"/>
+        </reference>
+        <reference name="product.info.additional">
+            <remove name="product_tag_list"/>
+        </reference>
+    </catalog_product_view>
+
     <tag_list_index translate="label">
         <label>Tags List (All Available)</label>
         <!-- Mage_Tag -->
         <reference name="root">
-            <action method="setTemplate"><template>page/3columns.phtml</template></action>
+            <action method="setTemplate">
+                <template>page/3columns.phtml</template>
+            </action>
         </reference>
         <reference name="left">
-            <remove name="tags_popular" />
+            <remove name="tags_popular"/>
         </reference>
     </tag_list_index>
 
