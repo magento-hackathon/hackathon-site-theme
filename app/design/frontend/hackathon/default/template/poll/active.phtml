@@ -25,9 +25,6 @@
 //]]>
 </script>
 <div class="block block-poll well alert-info">
-    <div class="block-title">
-        <strong><span><?php echo $this->__('Community Poll') ?></span></strong>
-    </div>
     <form id="pollForm" action="<?php echo $action ?>" method="post" onsubmit="return validatePollAnswerIsSelected();" class="form">
         <fieldset>
             <p class="block-subtitle"><?php echo $this->htmlEscape($poll->getPollTitle()); ?></p>

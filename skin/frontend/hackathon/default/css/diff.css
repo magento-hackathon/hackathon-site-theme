@@ -3,6 +3,11 @@ footer .nav li { float: right; margin-right: 10px }
 .block-sponsors .thumbnail { margin-bottom: 10px; text-align: center }
 .block-sponsors .thumbnail img { margin: 10px 0 }
 .block-sponsors h2 { margin-bottom: 10px }
+.cart .page-title { margin-bottom: 30px }
+.discount legend { font-size: 14px }
+.discount form { margin: 0 }
+.shopping-cart-totals { text-align: right }
+.shopping-cart-totals tbody td { border-top: none; border-bottom: 1px solid #dddddd }
 
 .block-cart .form-horizontal .control-group .control-label {
 	width: 50px !important;
@@ -186,7 +191,7 @@ ul.tags-list li{
     display: inline;
 }
 body.page-popup.catalog-product-compare-index{
-    padding-top: 0px;
+    padding-top: 0;
 }
 .page-popup.catalog-product-compare-index .well, .page-popup.catalog-product-compare-index .form-actions{
     margin-bottom: 0;

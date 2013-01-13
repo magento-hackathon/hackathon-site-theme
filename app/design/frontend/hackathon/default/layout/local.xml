@@ -17,9 +17,13 @@ Default layout, loads most of the pages
                 <name>right.permanent.callout</name>
             </action>
             <remove name="paypal.partner.right.logo"/>
+            <remove name="right.reports.product.viewed"/>
+            <remove name="right.reports.product.compared"/>
+            <remove name="catalog.compare.sidebar"/>
         </reference>
 
         <reference name="root">
+            <remove name="breadcrumbs"/>
             <remove name="global_messages"/>
         </reference>
         <reference name="content">
@@ -32,7 +36,7 @@ Default layout, loads most of the pages
             <remove name="wishlist_link"/>
             <remove name="checkout_cart_link"/>
             <action method="addLink" translate="label title" module="cms"><label>Home</label><url/><title>Home</title><prepare>true</prepare><urlParams/><position>1</position></action>
-            <action method="addLink" translate="label title" module="cms"><label>What is a Hackathon?</label><url>about</url><title>What is a Hackathon?</title><prepare/><urlParams/><position>5</position></action>
+            <action method="addLink" translate="label title" module="cms"><label>What is a Hackathon?</label><url>about</url><title>What is a Hackathon?</title><prepare>true</prepare><urlParams/><position>5</position></action>
         </reference>
         <reference name="footer_links">
             <action method="removeLinkByUrl">
@@ -70,27 +74,15 @@ Default layout, loads most of the pages
 
     <catalog_category_default translate="label">
         <remove name="catalog.leftnav"/>
-        <reference name="breadcrumbs">
-            <block type="catalog/layer_view" name="catalog.leftnav.breadcrumbs" after="currency" template="catalog/layer/view.phtml"/>
-        </reference>
     </catalog_category_default>
 
     <catalog_category_layered translate="label">
         <remove name="catalog.leftnav"/>
-        <reference name="breadcrumbs">
-            <block type="catalog/layer_view" name="catalog.leftnav.breadcrumbs" after="currency" template="catalog/layer/view.phtml"/>
-        </reference>
     </catalog_category_layered>
 
     <catalog_product_view>
-        <reference name="root">
-            <remove name="breadcrumbs"/>
-        </reference>
         <reference name="right">
             <block type="catalog/product_gallery" template="catalog/product/gallery.phtml" before="-"/>
-            <remove name="right.reports.product.viewed"/>
-            <remove name="right.reports.product.compared"/>
-            <remove name="catalog.compare.sidebar"/>
             <remove name="right.poll"/>
         </reference>
         <reference name="product.info">

@@ -11,9 +11,6 @@
 ?>
 <?php if(isset($poll)) : ?>
 <div class="block block-poll well alert-success">
-    <div class="block-title">
-        <strong><span><?php echo $this->__('Community Poll') ?></span></strong>
-    </div>
     <div class="block-content">
         <p class="block-subtitle"><?php echo $this->htmlEscape($poll->getPollTitle()); ?></p>
         <?php if( $poll_answers ): ?>
