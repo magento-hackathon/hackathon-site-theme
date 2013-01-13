@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
-    <!--
+<!--
 Default layout, loads most of the pages
 -->
 
@@ -20,6 +20,9 @@ Default layout, loads most of the pages
             <remove name="right.reports.product.viewed"/>
             <remove name="right.reports.product.compared"/>
             <remove name="catalog.compare.sidebar"/>
+            <remove name="wishlist_sidebar"/>
+            <remove name="sale.reorder.sidebar"/>
+            <remove name="cart_sidebar"/>
         </reference>
 
         <reference name="root">
