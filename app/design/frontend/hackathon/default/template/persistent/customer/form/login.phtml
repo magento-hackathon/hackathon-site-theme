@@ -1,16 +1,5 @@
 <?php
 /**
- * Magento responsive theme
- *
- * @category    design
- * @package     bootstrapped_default
- * @copyright   Copyright (c) 2012 Magenthon (http://magenthon.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- * @author      Vedran Subotic <vedran@magenthon.com>
- */
-?>
-<?php
-/**
  * Customer login form template
  *
  * @see app/design/frontend/base/default/template/customer/form/login.phtml
@@ -18,7 +7,7 @@
 /** @var $this Mage_Customer_Block_Form_Login */
 ?>
 <div class="account-login">
-    <div class="page-title well">
+    <div class="page-title">
         <h1><?php echo $this->__('Login or Create an Account') ?></h1>
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
@@ -28,8 +17,8 @@
                 <div class="hero-unit">
                     <h2><?php echo $this->__('New Customers') ?></h2>
                     <p><?php echo $this->__('By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.') ?></p>
-                </div>
                     <button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button btn btn-primary" onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
+                </div>
             </div>
             <div class="span6">
                 <div class="well">
@@ -57,9 +46,12 @@
                                 <input name="context" type="hidden" value="checkout" />
                             <?php endif; ?>
                         <div class="form-actions">
-                            <p class="help-block"><?php echo $this->__('* Required Fields') ?></p>
-                            <button type="submit" class="button btn btn-success pull-right" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
-                            <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
+                            <p class="help-block pull-left">
+                                <?php echo $this->__('* Required Fields') ?><br/>
+                                <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
+                            </p>
+                            <button type="submit" class="button btn btn-primary pull-right" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
+
                         </div>
                     </fieldset>
 

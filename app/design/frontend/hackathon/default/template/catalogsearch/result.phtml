@@ -11,7 +11,7 @@
 ?>
 <?php if($this->getResultCount()): ?>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<div class="page-title well">
+<div class="page-title">
     <?php if ($this->helper('rss/catalog')->getTagFeedUrl()): ?>
         <a href="<?php echo $this->helper('rss/catalog')->getTagFeedUrl() ?>" class="nobr link-rss"><?php echo $this->__('Subscribe to Feed') ?></a>
     <?php endif; ?>
@@ -26,7 +26,7 @@
     <?php endif; ?>
     <?php echo $this->getProductListHtml() ?>
 <?php else: ?>
-<div class="page-title well">
+<div class="page-title">
     <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
 </div>
 <p class="note-msg">
