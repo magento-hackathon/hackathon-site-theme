@@ -40,6 +40,7 @@ Default layout, loads most of the pages
             <remove name="checkout_cart_link"/>
             <action method="addLink" translate="label title" module="cms"><label>Home</label><url/><title>Home</title><prepare>true</prepare><urlParams/><position>1</position></action>
             <action method="addLink" translate="label title" module="cms"><label>What is a Hackathon?</label><url>about</url><title>What is a Hackathon?</title><prepare>true</prepare><urlParams/><position>5</position></action>
+            <action method="addLink" translate="label title" module="hackathonwebsite_projectidea"><label>Ideas</label><url>projectIdea</url><title>Ideas</title><prepare>true</prepare><urlParams/><position>6</position></action>
         </reference>
         <reference name="footer_links">
             <action method="removeLinkByUrl">
