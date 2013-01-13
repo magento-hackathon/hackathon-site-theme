@@ -53,18 +53,8 @@ Default layout, loads most of the pages
             </action>
             <remove name="return_link"/>
             <remove name="cms_footer_links"/>
-            <action method="addLink" translate="label title" module="cms">
-                <label>Imprint</label>
-                <url>imprint</url>
-                <title>Imprint</title>
-                <prepare/>
-            </action>
-            <action method="addLink" translate="label title" module="cms">
-                <label>Home</label>
-                <url/>
-                <title>Home</title>
-                <prepare>true</prepare>
-            </action>
+            <action method="addLink" translate="label title" module="cms"><label>Imprint</label><url>imprint</url><title>Imprint</title><prepare>true</prepare></action>
+            <action method="addLink" translate="label title" module="cms"><label>Home</label><url/><title>Home</title><prepare>true</prepare></action>
         </reference>
     </default>
 
