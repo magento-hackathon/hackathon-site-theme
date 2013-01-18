@@ -22,7 +22,6 @@ Default layout, loads most of the pages
             <remove name="catalog.compare.sidebar"/>
             <remove name="wishlist_sidebar"/>
             <remove name="sale.reorder.sidebar"/>
-            <remove name="cart_sidebar"/>
         </reference>
 
         <reference name="root">
@@ -86,6 +85,9 @@ Default layout, loads most of the pages
         </reference>
         <reference name="product.info.additional">
             <remove name="product_tag_list"/>
+        </reference>
+        <reference name="product.info.options.wrapper.bottom">
+            <action method="unsetChild"><block>product.info.addto</block></action>
         </reference>
     </catalog_product_view>
 

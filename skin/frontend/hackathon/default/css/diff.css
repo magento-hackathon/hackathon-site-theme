@@ -14,6 +14,8 @@ footer .nav li { float: right; margin-right: 10px }
 .catalog-product-view p { margin: 0 }
 .show-per-page { text-align: right; margin-bottom: 10px }
 .show-per-page label { display: inline; position: relative; top: -3px }
+.block-cart .amount { margin: 9px 0 }
+.block-cart .actions { text-align: right; }
 
 .block-cart .form-horizontal .control-group .control-label {
 	width: 50px !important;
