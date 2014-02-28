@@ -1,0 +1,22 @@
+{
+  "name": "magento-hackathon/hackathon-site-theme",
+  "license": ["GPL-3.0"],
+  "type": "magento-module",
+  "description": "Magento Hackathon Project Ideas for Shop",
+  "homepage": "https://github.com/magento-hackathon/hackathon-site-theme",
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*",
+  },
+  "config": {
+        "bin-dir": "bin"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packages.firegento.com"
+    }
+  ],
+  "extra": {
+        "magento-root-dir": "."
+    }
+}
