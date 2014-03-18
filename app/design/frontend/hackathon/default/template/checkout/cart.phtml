@@ -13,6 +13,7 @@
     <?php echo $this->getChildHtml('form_before') ?>
     <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
         <fieldset>
+            <?php echo $this->getBlockHtml('formkey') ?>
             <table id="shopping-cart-table" class="data-table cart-table table table-striped table-bordered table-condensed">
 
             <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>

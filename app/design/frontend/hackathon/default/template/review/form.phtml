@@ -14,6 +14,7 @@
     <?php if ($this->getAllowWriteReviewFlag()): ?>
     <form action="<?php echo $this->getAction() ?>" method="post" id="review-form" class="form">
         <fieldset>
+            <?php echo $this->getBlockHtml('formkey') ?>
             <?php echo $this->getChildHtml('form_fields_before')?>
             <legend><h3><?php echo $this->__("You're reviewing:"); ?> <span><?php echo $this->htmlEscape($this->getProductInfo()->getName()) ?></span></h3></legend>
             <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
