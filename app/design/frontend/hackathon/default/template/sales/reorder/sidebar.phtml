@@ -23,6 +23,7 @@
         <strong><span><?php echo $this->__('My Orders') ?></span></strong>
     </div>
     <form method="post" action="<?php echo $this->getFormActionUrl() ?>" id="reorder-validate-detail" class="form">
+        <?php echo $this->getBlockHtml('formkey') ?>
         <div class="block-content">
             <p class="block-subtitle"><?php echo $this->__('Last Ordered Items') ?></p>
             <?php $_showAddButtonFlag = false ?>
