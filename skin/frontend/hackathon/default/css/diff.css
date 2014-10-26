@@ -207,3 +207,9 @@ body.page-popup.catalog-product-compare-index{
 .icon-grid{
     background-position: -216px 0;
 }
+#checkout-review-table-wrapper .table {
+    margin-bottom: 0;
+}
+#checkout-review-submit {
+    padding: 5px;
+}
