@@ -32,6 +32,7 @@
                 <fieldset class="control-group error">
                     <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
                     <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+                    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
                     <legend><?php echo $this->__('Personal Information') ?></legend>
 
                         <div class="row">

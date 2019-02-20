@@ -156,7 +156,7 @@
     <?php endif; ?>
         <p class="help-block"><?php echo $this->__('* Required Fields') ?></p>
     </div>
-        
+    <?php echo $this->getBlockHtml('formkey') ?>
 </fieldset>
     <div class="form-actions" id="billing-buttons-container">
         <button type="button" title="<?php echo $this->__('Continue') ?>" class="btn" onclick="billing.save()"><span><span><?php echo $this->__('Continue') ?></span></span></button>
