@@ -114,6 +114,7 @@ Default layout, loads most of the pages
                 <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>My Orders</label></action>
                 <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
                 <action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                <action method="addLink" translate="label" module="customer"><name>memberfee</name><path/><label>Pay Member Fee</label><params><_direct>mitgliedsbeitrag-member-fee.html</_direct></params></action>
             </block>
         </reference>
     </customer_account>

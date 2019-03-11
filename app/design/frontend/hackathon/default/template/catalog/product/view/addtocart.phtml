@@ -1,7 +1,8 @@
 <?php $_product = $this->getProduct(); ?>
+<?php $_buttonTitle = $this->__('Register'); ?>
 <?php if($_product->isSaleable()): ?>
     <div class="form-inline">
-        <button type="button" title="<?php echo $buttonTitle ?>" class="btn btn-primary btn-large" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $this->__('Register') ?></span></span></button>
+        <button type="button" title="<?php echo $_buttonTitle ?>" class="btn btn-primary btn-large" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $_buttonTitle ?></span></span></button>
         <?php echo $this->getChildHtml('', true, true) ?>
     </div>
 <?php endif; ?>
