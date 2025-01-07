@@ -186,6 +186,13 @@ p.price-from, p.price-to {
     padding-left: 5px;
     display: inline-block;
     margin-bottom: 9px;
+    border: 2px solid red;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+ul + span .validation-advice {
+    margin-left: 0;
 }
 
 .control-group.error .validation-advice {
